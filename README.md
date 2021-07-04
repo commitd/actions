@@ -1,2 +1,3 @@
 # actions
-Committed GitHub Actions
+
+Committed GitHub Actions.
