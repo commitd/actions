@@ -31,6 +31,16 @@ npm run package:all
 npm test
 ```
 
+## Deployment
+
+Deployment is automatic by pull request from `main` to `latest`.
+A GitHub Action will build the source (for all actions) and commit the new action code in dist to the latest branch.
+
+It may be wise to tag a version if you are making breaking changes.
+By this means user of the action can refer to the tag `commitd/actions/example@v2` rather than `commitd/actions/example@latest`.
+
+The tag will naturally apply to all code in this repository (which make little sense from a semantic versioning perspective).
+
 ## Adding a new Typescript action
 
 Creating a new action with Typescript is simple by convention.
@@ -134,6 +144,10 @@ jobs:
         # with:
         #  value: "123"
 ```
+
+When you create a PR the `test-example.yml` will be run.
+
+If you push the built `dist` directory to a branch, for example `cf-example-dist`, then you will be able to test your action in other repositories using `uses: commitd/actions/example@cf-example-dist`.
 
 ## Adding a new composite or Docker action
 
