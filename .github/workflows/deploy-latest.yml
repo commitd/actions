@@ -1,0 +1,40 @@
+name: Deploy to latest
+
+on:
+  push:
+    branches:
+      - latest
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      # Not point in format,lint (done on PR)
+
+      - name: Build all
+        run: npm run package:all
+
+      - name: Build all
+        run: npm test
+
+      - name: Commit back to latest
+        # We need to allow the content of dist to be committed, so swap out the .gitignore
+        run: |
+          rm .gitignore
+          mv .latest-gitignore .gitignore
+          git config --global user.name 'Committed'
+          git config --global user.email 'commitd-bot@users.noreply.github.com'
+          git commit -am "Deploy to latest"
+          git push
