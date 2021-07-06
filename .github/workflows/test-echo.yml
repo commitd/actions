@@ -6,9 +6,12 @@ on:
     branches:
       - main
     paths:
+      - .github/workflows/test-echo.yml
       - src/echo/**.ts
+
   pull_request:
     paths:
+      - .github/workflows/test-echo.yml
       - src/echo/**.ts
 
 env:

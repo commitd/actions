@@ -92,9 +92,11 @@ on:
     branches:
       - main
     paths:
-      - src/example/**.ts
+       - .github/workflows/test-example.yml
+       - src/example/**.ts
   pull_request:
     paths:
+      - .github/workflows/test-example.yml
       - src/example/**.ts
 
 env:
@@ -128,8 +130,9 @@ jobs:
 
       - name: Use action
         uses: ./${env.ACTION}
-        with:
-          value: "Hello from GitHub Actions"
+        # Include any inputs your action needs
+        # with:
+        #  value: "123"
 ```
 
 ## Adding a new composite or Docker action
