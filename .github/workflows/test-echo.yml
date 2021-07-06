@@ -1,0 +1,42 @@
+name: Test echo
+
+# Only run on pull requests and push to main when the
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/echo/**.ts
+  pull_request:
+    paths:
+      - src/echo/**.ts
+
+env:
+  ACTION: echo
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run package --action=${env.ACTION}
+
+      - name: Test
+        run: npm test src/${env.ACTION}
+
+      - name: Use action
+        uses: ./${env.ACTION}
+        with:
+          value: "Hello from GitHub Actions"

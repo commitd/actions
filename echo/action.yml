@@ -1,0 +1,11 @@
+name: "Committed Echo"
+description: "A  Typescript action which will echo the input value. Use for the most basic testing"
+author: "Committed @committed"
+inputs:
+  value:
+    required: true
+    description: "Value to print and re-output"
+    default: "Hello from Committed!"
+runs:
+  using: "node12"
+  main: "dist/echo/index.js"
