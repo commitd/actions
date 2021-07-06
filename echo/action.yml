@@ -8,4 +8,4 @@ inputs:
     default: "Hello from Committed!"
 runs:
   using: "node12"
-  main: "dist/echo/index.js"
+  main: "../dist/echo/index.js"

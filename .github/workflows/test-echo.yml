@@ -8,10 +8,12 @@ on:
     paths:
       - .github/workflows/test-echo.yml
       - src/echo/**.ts
+      - echo/action.yml
 
   pull_request:
     paths:
       - .github/workflows/test-echo.yml
+      - echo/action.yml
       - src/echo/**.ts
 
 env:
