@@ -37,9 +37,11 @@ Deployment is automatic by pull request from `main` to `latest`.
 A GitHub Action will build the source (for all actions) and commit the new action code in dist to the latest branch.
 
 It may be wise to tag a version if you are making breaking changes.
-By this means user of the action can refer to the tag `commitd/actions/example@v2` rather than `commitd/actions/example@latest`.
 
-The tag will naturally apply to all code in this repository (which make little sense from a semantic versioning perspective).
+Use the `v[yy.mm.dd]` format for versioning.
+Hence a semantic release `v1`, `v2`, makes little sense as different components will have different breaking changes.
+
+By this means user of the action can refer to the tag `commitd/actions/example@v21.02` rather than `commitd/actions/example@latest` to pin to the version as of Feb 2020.
 
 ## Adding a new Typescript action
 
