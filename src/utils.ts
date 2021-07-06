@@ -21,7 +21,12 @@ export function runAsAction(
   }
 
   const np = process.execPath
-  const ip = path.join(__dirname, "..", "dist", action, "main.js")
+
+  // TODO: We could look here if dist/$action/index.js or build/$action/main.js exists
+  // and pick the newer.
+  // THough perhaps its better to have a different environment variable?
+
+  const ip = path.join(__dirname, "..", "dist", action, "index.js")
   const options: cp.ExecFileSyncOptions = {
     env: process.env,
   }
