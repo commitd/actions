@@ -39,7 +39,7 @@ jobs:
       - name: Test
         run: npm test src/${{ env.ACTION }}
 
-      - name: Use action
-        uses: ./${{ env.ACTION }}
-        with:
-          value: "Hello from GitHub Actions"
+      # - name: Use action
+      #   uses: ./${{ env.ACTION }}
+      #   with:
+      #     value: "Hello from GitHub Actions"
