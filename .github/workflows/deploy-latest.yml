@@ -6,7 +6,7 @@ on:
       - latest
 
 jobs:
-  check:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,15 +26,16 @@ jobs:
       - name: Build all
         run: npm run package:all
 
-      - name: Build all
+      - name: Test all
         run: npm test
 
-      - name: Commit back to latest
+      - name: Commit to latest
         # We need to allow the content of dist to be committed, so swap out the .gitignore
         run: |
-          rm .gitignore
-          mv .latest-gitignore .gitignore
+          cp .latest-gitignore .gitignore
           git config --global user.name 'Committed'
           git config --global user.email 'commitd-bot@users.noreply.github.com'
+          git add .gitignore
+          git add dist
           git commit -am "Deploy to latest"
           git push
