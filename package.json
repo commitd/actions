@@ -26,7 +26,7 @@
   "author": "Committed <opensource@committed.io>",
   "license": "MIT",
   "dependencies": {
-    "@actions/artifact": "^0.5.2",
+    "@actions/artifact": "^2.1.7",
     "@actions/cache": "^1.0.7",
     "@actions/core": "^1.2.6",
     "@actions/exec": "^1.1.0",
